@@ -1,0 +1,59 @@
+body {
+    background: #f4f6fb;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+h1, h2, h3, h5 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+.navbar {
+    box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+}
+main.container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(44,62,80,0.08);
+    padding: 2rem 2.5rem 2.5rem 2.5rem;
+    margin-bottom: 2rem;
+}
+.card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+}
+.card-header {
+    border-radius: 12px 12px 0 0;
+}
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 0.98rem;
+}
+.badge {
+    font-size: 1em;
+    padding: 0.5em 0.8em;
+}
+.footer {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+form .btn-success {
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 8px;
+}
+form input[type="file"] {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 0.4em 0.7em;
+    background: #f8f9fa;
+}
+```/* filepath: /Users/madhusudhananjeyaram/Documents/GitHub/whatsapp_analyser/frontend/frontend/analyser/static/analyser/style.css */
+
+body {
+    background: #f8f9fa;
+}
+h1, h2, h3 {
+    color: #2c3e50;
+}
+.table th, .table td {
+    vertical-align: middle;
+}

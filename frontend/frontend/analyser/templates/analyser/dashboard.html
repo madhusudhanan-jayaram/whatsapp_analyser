@@ -1,0 +1,106 @@
+{% extends "analyser/base.html" %}
+{% block content %}
+<div class="row justify-content-center mb-4">
+  <div class="col-md-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h1 class="card-title mb-3 text-center">WhatsApp Chat Analysis</h1>
+        <form method="post" enctype="multipart/form-data" class="row g-3 align-items-center justify-content-center">
+            {% csrf_token %}
+            <div class="col-auto">{{ form.chat_file }}</div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success px-4">Upload</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if results.messages %}
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Flirt Prediction</h2>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover table-bordered align-middle">
+          <thead class="table-light">
+            <tr><th>Date</th><th>Time</th><th>Name</th><th>Message</th><th>Flirt?</th></tr>
+          </thead>
+          <tbody>
+          {% for msg in results.messages %}
+            <tr>
+                <td>{{ msg.Date }}</td>
+                <td>{{ msg.Time }}</td>
+                <td>{{ msg.Name }}</td>
+                <td>{{ msg.Chat }}</td>
+                <td><span class="badge {% if msg.flirt_label == 'Flirt' %}bg-danger{% else %}bg-secondary{% endif %}">{{ msg.flirt_label }}</span></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Most Talkative Users</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for user, count in results.talkative.items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ user }}</span>
+            <span class="badge bg-primary rounded-pill">{{ count }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Most Active Day</h5>
+      </div>
+      <div class="card-body">
+        <p class="mb-0"><strong>{{ results.active_day }}</strong></p>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-warning text-dark">
+        <h5 class="mb-0">Most Active Hour</h5>
+      </div>
+      <div class="card-body">
+        <p class="mb-0"><strong>{{ results.active_hour }}:00</strong></p>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">Media Count Per Person</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for user, count in results.media_count.items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ user }}</span>
+            <span class="badge bg-secondary rounded-pill">{{ count }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Missed Calls Per Person</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for user, count in results.missed_calls.items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ user }}</span>
+            <span class="badge bg-danger rounded-pill">{{ count }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
