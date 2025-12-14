@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend.analyser',  # Your app
+    'whatsapp.analyser',  
 ]
 
 MIDDLEWARE = [
@@ -34,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'frontend.urls'
+ROOT_URLCONF = 'whatsapp.urls'
 
 TEMPLATES = [
     {
@@ -52,8 +52,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'frontend.wsgi.application'
-ASGI_APPLICATION = 'frontend.sgi.application'
+WSGI_APPLICATION = 'whatsapp.wsgi.application'
+ASGI_APPLICATION = 'whatsapp.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -99,7 +99,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend', 'analyser', 'static'),
+    os.path.join(BASE_DIR, 'whatsapp', 'analyser', 'static'),
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
